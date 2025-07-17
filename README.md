@@ -84,25 +84,15 @@ ________________________________________________________________________________
 
 #### 🔍 Here's What the Business Asked For:
 
-* **Two sets of data**
+* **Two sets of data** : We're given data from **two systems**. One that handles customer orders (ERP) and another that tracks customer interactions (CRM). Both are provided in CSV file format.
 
-  We're given data from **two systems**. One that handles customer orders (ERP) and another that tracks customer interactions (CRM). Both are provided in CSV file format.
+* **Clean and usable data** : We need to **fix issues in the data** before we use it. That means removing duplicates, filling in missing information, and making sure all values are valid and consistent.
 
-* **Clean and usable data**
+* **Combine both data sources** : We’re expected to **merge the two datasets** into a single, simple format so that analysts can run reports and get insights easily.
 
-  We need to **fix issues in the data** before we use it. That means removing duplicates, filling in missing information, and making sure all values are valid and consistent.
+* **Just the latest data** : We are only focusing on the **most recent records**. No need to track history or changes over time.
 
-* **Combine both data sources**
-
-  We’re expected to **merge the two datasets** into a single, simple format so that analysts can run reports and get insights easily.
-
-* **Just the latest data**
-
-  We are only focusing on the **most recent records**. No need to track history or changes over time.
-
-* **Good documentation**
-
-  We also need to **explain the final structure** clearly so that both technical and non-technical people can understand it.
+* **Good documentation** : We also need to **explain the final structure** clearly so that both technical and non-technical people can understand it.
 
 ### 📌 Step 2: Designing Data Architecture
 
@@ -114,9 +104,11 @@ This project follows the Medallion architecture, a common design pattern in mode
 * **Silver**: Cleaned and transformed data, ready for business use
 * **Gold**: Final, aggregated data optimized for reporting and analytics
 
-**Defining the 3 Layers of the Medallion Architecture**
-
 <img width="1007" height="698" alt="image" src="https://github.com/user-attachments/assets/2ad771a3-ab92-4f5a-b3c0-055225006904" />
+
+### Data Architecture
+
+<img width="1507" height="757" alt="image" src="https://github.com/user-attachments/assets/abc1f0ef-89d3-4896-9dd0-8d7dabf79f13" />
 
 
 
