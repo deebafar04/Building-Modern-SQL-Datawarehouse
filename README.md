@@ -106,12 +106,103 @@ This project follows the Medallion architecture, a common design pattern in mode
 
 <img width="1007" height="698" alt="image" src="https://github.com/user-attachments/assets/2ad771a3-ab92-4f5a-b3c0-055225006904" />
 
-### Data Architecture
+This warehouse implements the **Medallion Architecture**, enabling structured data processing in stages:
 
-<img width="1507" height="757" alt="image" src="https://github.com/user-attachments/assets/abc1f0ef-89d3-4896-9dd0-8d7dabf79f13" />
+| Layer  | Description                                                                 |
+|--------|-----------------------------------------------------------------------------|
+| Bronze | Raw ingestion of ERP/CRM data using external tables                        |
+| Silver | Standardized and joined dimension tables (customers, products, locations)  |
+| Gold   | Analytical-ready fact tables like `sales_facts` for business use           |
 
+📌 **Visualization:**
+![ETL Flow](docs/ETL.png)  
+![Data Layers](docs/data_layers.pdf)  
+![Architecture](docs/data_architecture.png)
 
+---
 
+## 🔄 ETL Workflow Overview
+
+1. **Bronze Layer**
+   - Files: `ddl_bronze.sql`, `proc_load_bronze.sql`
+   - Action: Load CSVs into raw staging tables (1:1 with source)
+
+2. **Silver Layer**
+   - Files: `ddl_silver.sql`, `proc_load_silver.sql`
+   - Action: Clean nulls, normalize formats, apply business logic joins
+
+3. **Gold Layer**
+   - Files: `ddl_gold.sql`
+   - Action: Final fact + dimension star schema (used for reporting)
+
+---
+
+## 📂 Project Structure
+
+```
+sql-data-warehouse-project-main/
+│
+├── datasets/
+│   ├── source_crm/                  # Customer Info, Product Info, Sales Data (CRM)
+│   └── source_erp/                  # Customer Hierarchies, Locations, Product Categories (ERP)
+│
+├── scripts/
+│   ├── init_database.sql            # Schema and warehouse setup
+│   ├── bronze/                      # Staging layer DDL + load procedures
+│   ├── silver/                      # Cleaned layer DDL + procedures
+│   └── gold/                        # Final star schema tables
+│
+├── docs/                            # Architecture diagrams and documentation
+│   ├── data_architecture.png
+│   ├── ETL.png
+│   ├── data_flow.png
+│   ├── Project_Notes_Sketches.pdf
+│   └── data_layers.pdf
+│
+└── README.md
+```
+
+## 📌 SQL Features Demonstrated
+
+- Relational modeling (3NF to Star Schema)
+- Window functions, joins, and surrogate keys
+- Modular stored procedures for staging and transformation
+- Table normalization and data integrity
+- External table loads and batch script execution
+
+---
+
+## 🚀 How to Run This Project
+
+1. Set up a local SQL database (e.g., PostgreSQL)
+2. Execute `init_database.sql` to create schemas
+3. Load raw data using `bronze/proc_load_bronze.sql`
+4. Run transformations in `silver/proc_load_silver.sql`
+5. Query and analyze from gold-layer tables
+
+---
+
+## 📚 Documentation Highlights
+
+- 📖 `docs/data_catalog.md`: Lists all source and target tables with mapping
+- 🧠 `docs/naming_conventions.md`: Standardized column and table naming
+- 🗺️ `docs/data_flow.png`: Shows how data flows layer by layer
+
+---
+
+## 👤 About the Author
+
+**Deeba Farheen H N**  
+Data Engineer | M.S. Data Science @ University of Michigan  
+I specialize in building scalable data systems and transforming raw operational data into actionable intelligence.
+
+- 🔗 [LinkedIn](https://linkedin.com/in/deeba-farheen-h-n)
+- 💻 [GitHub](https://github.com/deebafar04)
+- 📫 [deeba@umich.edu](mailto:deeba@umich.edu)
+
+> 🌟 If you found this project helpful or insightful, feel free to star the repo and connect!
+
+---
 
 
 
