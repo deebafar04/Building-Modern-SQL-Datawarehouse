@@ -115,7 +115,7 @@ This warehouse implements the **Medallion Architecture**, enabling structured da
 | Gold   | Analytical-ready fact tables like `sales_facts` for business use           |
 
 📌 **Visualization:**
-![ETL Flow](docs/ETL.png)  
+<img width="867" height="751" alt="image" src="https://github.com/user-attachments/assets/788488fc-1635-4606-986a-fdd36aa99d22" />
 ![Data Layers](docs/data_layers.pdf)  
 ![Architecture](docs/data_architecture.png)
 
